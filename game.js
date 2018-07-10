@@ -281,3 +281,8 @@ const actorDict = {
     '|': VerticalFireball,
     'v': FireRain
 };
+
+
+loadLevels()
+    .then(result => runGame(JSON.parse(result), parser, DOMDisplay))
+    .then(() => alert('Вы выиграли приз!'));
