@@ -1,6 +1,5 @@
 'use strict';
 
-
 class Vector {
     constructor(x=0, y=0) {
         this.x = x;
@@ -282,9 +281,3 @@ const actorDict = {
     '|': VerticalFireball,
     'v': FireRain
 };
-
-const parser = new LevelParser(actorDict);
-
-loadLevels()
-    .then((res) => {runGame(JSON.parse(res), parser, DOMDisplay)
-        .then(() => alert('Вы выиграли!'))});
