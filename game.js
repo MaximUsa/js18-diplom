@@ -274,6 +274,106 @@ class Player extends Actor {
     }
 }
 
+const schemas = [
+    [
+        "     v                 ",
+        "                       ",
+        "                       ",
+        "                       ",
+        "                       ",
+        "  |xxx       w         ",
+        "  o                 o  ",
+        "  x               = x  ",
+        "  x          o o    x  ",
+        "  x  @    *  xxxxx  x  ",
+        "  xxxxx             x  ",
+        "      x!!!!!!!!!!!!!x  ",
+        "      xxxxxxxxxxxxxxx  ",
+        "                       "
+    ],
+    [
+        "     v                 ",
+        "                       ",
+        "                       ",
+        "                       ",
+        "                       ",
+        "  |                    ",
+        "  o                 o  ",
+        "  x               = x  ",
+        "  x          o o    x  ",
+        "  x  @       xxxxx  x  ",
+        "  xxxxx             x  ",
+        "      x!!!!!!!!!!!!!x  ",
+        "      xxxxxxxxxxxxxxx  ",
+        "                       "
+    ],
+    [
+        "        |           |  ",
+        "                       ",
+        "                       ",
+        "                       ",
+        "                       ",
+        "                       ",
+        "                       ",
+        "                       ",
+        "                       ",
+        "     |                 ",
+        "                       ",
+        "         =      |      ",
+        " @ |  o            o   ",
+        "xxxxxxxxx!!!!!!!xxxxxxx",
+        "                       "
+    ],
+    [
+        "                       ",
+        "                       ",
+        "                       ",
+        "    o                  ",
+        "    x      | x!!x=     ",
+        "         x             ",
+        "                      x",
+        "                       ",
+        "                       ",
+        "                       ",
+        "               xxx     ",
+        "                       ",
+        "                       ",
+        "       xxx  |          ",
+        "                       ",
+        " @                     ",
+        "xxx                    ",
+        "                       "
+    ], [
+        "   v         v",
+        "              ",
+        "         !o!  ",
+        "              ",
+        "              ",
+        "              ",
+        "              ",
+        "         xxx  ",
+        "          o   ",
+        "        =     ",
+        "  @           ",
+        "  xxxx        ",
+        "  |           ",
+        "      xxx    x",
+        "              ",
+        "          !   ",
+        "              ",
+        "              ",
+        " o       x    ",
+        " x      x     ",
+        "       x      ",
+        "      x       ",
+        "   xx         ",
+        "              "
+    ]
+];
+
+
+
+
 const actorDict = {
     '@': Player,
     'o': Coin,
