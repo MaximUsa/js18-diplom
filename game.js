@@ -275,23 +275,7 @@ class Player extends Actor {
 }
 
 const schemas = [
-    [
-        "     v                 ",
-        "                       ",
-        "                       ",
-        "                       ",
-        "                       ",
-        "  |xxx       w         ",
-        "  o                 o  ",
-        "  x               = x  ",
-        "  x          o o    x  ",
-        "  x  @    *  xxxxx  x  ",
-        "  xxxxx             x  ",
-        "      x!!!!!!!!!!!!!x  ",
-        "      xxxxxxxxxxxxxxx  ",
-        "                       "
-    ],
-    [
+        [
         "     v                 ",
         "                       ",
         "                       ",
