@@ -382,7 +382,8 @@ const actorDict = {
     'v': FireRain
 };
 
+const parser = new LevelParser(actorDict);
 
-loadLevels()
-    .then(result => runGame(JSON.parse(result), parser, DOMDisplay))
-    .then(() => alert('Вы выиграли приз!'));
+loadLevels().then(json =>
+    runGame(JSON.parse(json), parser, DOMDisplay))
+    .then(() => alert('Вы выйграли приз!'));
