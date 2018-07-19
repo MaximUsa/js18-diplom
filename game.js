@@ -79,14 +79,14 @@ class Level {
 
     actorAt(moveActor) {
         if (!(moveActor instanceof Actor)) {
-            throw new Error("Level: actorAt's argument is wrong");
+            throw new Error('Неверный аргумент.');
         }
         return this.actors.find(actor => actor.isIntersect(moveActor));
     }
 
     obstacleAt(position, size) {
         if (!((position instanceof Vector)&&(size instanceof Vector))) {
-            throw new Error("Передан не вектор.");
+            throw new Error('Передан не вектор.);
         }
 
         const topBorder = Math.floor(position.y);
