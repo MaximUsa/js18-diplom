@@ -63,8 +63,16 @@ class Actor {
 }
 
 class Level {
-    constructor(grid = [], actors = []) {
+    constructor(grid = [], actors = [], numLives = 3) {
+    	this.immmortal = false;
+    	this.numLives = numLives;
+    	this.livesActors = [
+    		new Live(new Vector(0,0)),
+    		new Live(new Vector(1,0)),
+    		new Live(new Vector(2,0)),
+    	]
         this.actors = actors.slice();
+        this.actors = this.actors.concat(this.livesActors);
         this.status = null;
         this.finishDelay = 1;
         this.grid = grid.slice();
@@ -126,9 +134,25 @@ class Level {
         if (this.status !== null) {
             return
         }
+
+        if(!this.immmortal) {
         if (['lava', 'fireball'].some(element => element === touched )) {
-            this.status = 'lost';
+        	this.immmortal = true;
+        	//this.status = "immmortal";
+        	this.numLives--;
+        	const live = this.livesActors.pop();
+        	this.removeActor(live);
+        	console.log(this.numLives);
+        	if(this.numLives <= 0){
+            	this.status = 'lost';
+        	} else { setTimeout(() => {
+        		console.log(this.immmortal)
+        		this.immmortal = false; 
+        		console.log(this.immmortal)
+        	}, 5000);}
         }
+    }
+
         if (touched === 'coin' && actor.type === 'coin') {
             this.removeActor(actor);
             if (this.noMoreActors('coin')) {
@@ -177,11 +201,24 @@ class LevelParser {
         return actors;
     }
 
-    parse(plan) {
-        return new Level(this.createGrid(plan), this.createActors(plan));
+    parse(plan, numLives = 3) {
+        return new Level(this.createGrid(plan), this.createActors(plan), numLives);
     }
 }
-
+class Live extends Actor{
+	constructor(position = new Vector(0, 0)) {
+        super(position, new Vector(1, 1), new Vector(0, 0));
+    }
+    get type() {
+        return 'live';
+    }
+    getNextPosition(time = 1) {
+    }
+    handleObstacle() {
+    }
+    act(time, level) {
+    }
+}
 class Fireball extends Actor {
     constructor(position = new Vector(0, 0), speed = new Vector(0, 0)) {
         super(position, new Vector(1, 1), speed);

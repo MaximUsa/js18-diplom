@@ -44,6 +44,10 @@ hidden {
   background: rgb(160, 64, 64);
 }
 
+.immortal .player {
+  background: yellow;
+}
+
 .won .player {
   box-shadow: -4px -7px 8px white, 4px -7px 8px white;
 }
@@ -54,3 +58,8 @@ hidden {
   max-height: 450px;
   position: relative;
 }
+
+.live {
+ background-color: green;
+}
+

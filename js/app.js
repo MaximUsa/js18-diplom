@@ -250,6 +250,7 @@ function initGameObjects() {
 }
 
 function runGame(plans, Parser, Display) {
+  const numLives = 3;
   return new Promise(done => {
     function startLevel(n) {
       runLevel(Parser.parse(plans[n]), Display)
