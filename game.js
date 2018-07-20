@@ -86,7 +86,7 @@ class Level {
 
     obstacleAt(position, size) {
         if (!((position instanceof Vector)&&(size instanceof Vector))) {
-            throw new Error('Передан не вектор.);
+            throw new Error('Передан не вектор.'); 
         }
 
         const topBorder = Math.floor(position.y);
