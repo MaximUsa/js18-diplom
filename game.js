@@ -143,13 +143,13 @@ class Level {
         	const live = this.livesActors.pop();
         	this.removeActor(live);
         	console.log(this.numLives);
-        	if(this.numLives <= 0){
+        		if(this.numLives <= 0){
             	this.status = 'lost';
-        	} else { setTimeout(() => {
-        		console.log(this.immmortal)
-        		this.immmortal = false; 
-        		console.log(this.immmortal)
-        	}, 5000);}
+        			} else { setTimeout(() => {
+        				console.log(this.immmortal)
+        				this.immmortal = false; 
+        				console.log(this.immmortal)
+        	},4000);}
         }
     }
 
@@ -362,7 +362,7 @@ const schemas = [
         "       xxx  |          ",
         "                       ",
         " @                     ",
-        "xxx                    ",
+        "xxxxxxxxxxx!!!!!!!!!!!!",
         "                       "
     ], [
         "   v         v",
