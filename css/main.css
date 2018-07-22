@@ -44,7 +44,7 @@ hidden {
   background: rgb(160, 64, 64);
 }
 
-.immortal .player {
+.player .immortal {
   background-color: yellow;
 }
 
@@ -60,6 +60,7 @@ hidden {
 }
 
 .live {
- background-color: green;
+ background-color: #B132BA;
+ position: fixed;
 }
 

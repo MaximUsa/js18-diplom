@@ -67,9 +67,9 @@ class Level {
     	this.immmortal = false;
     	this.numLives = numLives;
     	this.livesActors = [
-    		new Live(new Vector(0,0)),
-    		new Live(new Vector(1,0)),
-    		new Live(new Vector(2,0)),
+    		new Live(new Vector(15.5,1)),
+    		new Live(new Vector(17,1)),
+    		new Live(new Vector(18.5,1)),
     	]
         this.actors = actors.slice();
         this.actors = this.actors.concat(this.livesActors);
@@ -143,13 +143,15 @@ class Level {
         	const live = this.livesActors.pop();
         	this.removeActor(live);
         	console.log(this.numLives);
-        		if(this.numLives <= 0){
-            	this.status = 'lost';
-        			} else { setTimeout(() => {
-        				console.log(this.immmortal)
-        				this.immmortal = false; 
-        				console.log(this.immmortal)
-        	},4000);}
+
+        if(this.numLives <= 0) {
+            this.status = 'lost';
+
+        	} else { setTimeout(() => {
+        		console.log(this.immmortal)
+        		this.immmortal = false; 
+        		console.log(this.immmortal)
+        	},2000);}
         }
     }
 
@@ -205,7 +207,7 @@ class LevelParser {
         return new Level(this.createGrid(plan), this.createActors(plan), numLives);
     }
 }
-class Live extends Actor{
+class Live extends Actor {
 	constructor(position = new Vector(0, 0)) {
         super(position, new Vector(1, 1), new Vector(0, 0));
     }
@@ -311,86 +313,86 @@ class Player extends Actor {
     }
 }
 
-const schemas = [
-        [
-        "     v                 ",
-        "                       ",
-        "                       ",
-        "                       ",
-        "                       ",
-        "  |                    ",
-        "  o                 o  ",
-        "  x               = x  ",
-        "  x          o o    x  ",
-        "  x  @       xxxxx  x  ",
-        "  xxxxx             x  ",
-        "      x!!!!!!!!!!!!!x  ",
-        "      xxxxxxxxxxxxxxx  ",
-        "                       "
-    ],
-    [
-        "        |           |  ",
-        "                       ",
-        "                       ",
-        "                       ",
-        "                       ",
-        "                       ",
-        "                       ",
-        "                       ",
-        "                       ",
-        "     |                 ",
-        "                       ",
-        "         =      |      ",
-        " @ |  o            o   ",
-        "xxxxxxxxx!!!!!!!xxxxxxx",
-        "                       "
-    ],
-    [
-        "                       ",
-        "                       ",
-        "                       ",
-        "    o                  ",
-        "    x      | x!!x=     ",
-        "         x             ",
-        "                      x",
-        "                       ",
-        "                       ",
-        "                       ",
-        "               xxx     ",
-        "                       ",
-        "                       ",
-        "       xxx  |          ",
-        "                       ",
-        " @                     ",
-        "xxxxxxxxxxx!!!!!!!!!!!!",
-        "                       "
-    ], [
-        "   v         v",
-        "              ",
-        "         !o!  ",
-        "              ",
-        "              ",
-        "              ",
-        "              ",
-        "         xxx  ",
-        "          o   ",
-        "        =     ",
-        "  @           ",
-        "  xxxx        ",
-        "  |           ",
-        "      xxx    x",
-        "              ",
-        "          !   ",
-        "              ",
-        "              ",
-        " o       x    ",
-        " x      x     ",
-        "       x      ",
-        "      x       ",
-        "   xx         ",
-        "              "
-    ]
-];
+// const schemas = [
+//         [
+//         "     v                 ",
+//         "                       ",
+//         "                       ",
+//         "                       ",
+//         "                       ",
+//         "  |                    ",
+//         "  o                 o  ",
+//         "  x               = x  ",
+//         "  x          o o    x  ",
+//         "  x  @       xxxxx  x  ",
+//         "  xxxxx             x  ",
+//         "      x!!!!!!!!!!!!!x  ",
+//         "      xxxxxxxxxxxxxxx  ",
+//         "                       "
+//     ],
+//     [
+//         "        |           |  ",
+//         "                       ",
+//         "                       ",
+//         "                       ",
+//         "                       ",
+//         "                       ",
+//         "                       ",
+//         "                       ",
+//         "                       ",
+//         "     |                 ",
+//         "                       ",
+//         "         =      |      ",
+//         " @ |  o            o   ",
+//         "xxxxxxxxx!!!!!!!xxxxxxx",
+//         "                       "
+//     ],
+//     [
+//         "                       ",
+//         "                       ",
+//         "                       ",
+//         "    o                  ",
+//         "    x      | x!!x=     ",
+//         "         x             ",
+//         "                      x",
+//         "                       ",
+//         "                       ",
+//         "                       ",
+//         "               xxx     ",
+//         "                       ",
+//         "                       ",
+//         "       xxx  |          ",
+//         "                       ",
+//         " @                     ",
+//         "xxxxxxxxxxx!!!!!!!!!!!!",
+//         "                       "
+//     ], [
+//         "   v         v",
+//         "              ",
+//         "         !o!  ",
+//         "              ",
+//         "              ",
+//         "              ",
+//         "              ",
+//         "         xxx  ",
+//         "          o   ",
+//         "        =     ",
+//         "  @           ",
+//         "  xxxx        ",
+//         "  |           ",
+//         "      xxx    x",
+//         "              ",
+//         "          !   ",
+//         "              ",
+//         "              ",
+//         " o       x    ",
+//         " x      x     ",
+//         "       x      ",
+//         "      x       ",
+//         "   xx         ",
+//         "              "
+//     ]
+// ];
 
 
 
