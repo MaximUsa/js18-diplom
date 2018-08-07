@@ -64,13 +64,14 @@ class Actor {
 
 class Level {
     constructor(grid = [], actors = [], numLives = 3) {
+        this.actors = actors;
         this.immmortal = false;
         this.numLives = numLives;
         this.livesActors = [
             new Live(new Vector(15.5, 1)),
             new Live(new Vector(17, 1)),
             new Live(new Vector(18.5, 1)),
-        ]
+        ]        
         this.actors = actors.slice();
         this.actors = this.actors.concat(this.livesActors);
         this.status = null;
@@ -149,9 +150,9 @@ class Level {
 
                 } else {
                     setTimeout(() => {
-                        console.log(this.immmortal)
+                        //console.log(this.immmortal)
                         this.immmortal = false;
-                        console.log(this.immmortal)
+                        //console.log(this.immmortal)
                     }, 2000);
                 }
             }
