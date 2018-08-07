@@ -1,7 +1,7 @@
 'use strict';
 
 class Vector {
-    constructor(x=0, y=0) {
+    constructor(x = 0, y = 0) {
         this.x = x;
         this.y = y;
     }
@@ -20,7 +20,7 @@ class Vector {
 
 class Actor {
     constructor(pos = new Vector(0, 0), size = new Vector(1, 1), speed = new Vector(0, 0)) {
-        if (!((pos instanceof Vector)&&(size instanceof Vector)&&(speed instanceof Vector))) {
+        if (!((pos instanceof Vector) && (size instanceof Vector) && (speed instanceof Vector))) {
             throw new Error('Передан не вектор.');
         }
         this.pos = pos;
@@ -64,20 +64,20 @@ class Actor {
 
 class Level {
     constructor(grid = [], actors = [], numLives = 3) {
-    	this.immmortal = false;
-    	this.numLives = numLives;
-    	this.livesActors = [
-    		new Live(new Vector(15.5,1)),
-    		new Live(new Vector(17,1)),
-    		new Live(new Vector(18.5,1)),
-    	]
+        this.immmortal = false;
+        this.numLives = numLives;
+        this.livesActors = [
+            new Live(new Vector(15.5, 1)),
+            new Live(new Vector(17, 1)),
+            new Live(new Vector(18.5, 1)),
+        ]
         this.actors = actors.slice();
         this.actors = this.actors.concat(this.livesActors);
         this.status = null;
         this.finishDelay = 1;
         this.grid = grid.slice();
         this.height = this.grid.length;
-        this.width = Math.max(0, ...this.grid.map(element=> element.length));
+        this.width = Math.max(0, ...this.grid.map(element => element.length));
         this.player = this.actors.find(actor => actor.type === 'player');
     }
 
@@ -93,8 +93,8 @@ class Level {
     }
 
     obstacleAt(position, size) {
-        if (!((position instanceof Vector)&&(size instanceof Vector))) {
-            throw new Error('Передан не вектор.'); 
+        if (!((position instanceof Vector) && (size instanceof Vector))) {
+            throw new Error('Передан не вектор.');
         }
 
         const topBorder = Math.floor(position.y);
@@ -135,25 +135,27 @@ class Level {
             return
         }
 
-        if(!this.immmortal) {
-        if (['lava', 'fireball'].some(element => element === touched )) {
-        	this.immmortal = true;
-        	//this.status = "immmortal";
-        	this.numLives--;
-        	const live = this.livesActors.pop();
-        	this.removeActor(live);
-        	console.log(this.numLives);
+        if (!this.immmortal) {
+            if (['lava', 'fireball'].some(element => element === touched)) {
+                this.immmortal = true;
+                //this.status = "immmortal";
+                this.numLives--;
+                const live = this.livesActors.pop();
+                this.removeActor(live);
+                console.log(this.numLives);
 
-        if(this.numLives <= 0) {
-            this.status = 'lost';
+                if (this.numLives <= 0) {
+                    this.status = 'lost';
 
-        	} else { setTimeout(() => {
-        		console.log(this.immmortal)
-        		this.immmortal = false; 
-        		console.log(this.immmortal)
-        	},2000);}
+                } else {
+                    setTimeout(() => {
+                        console.log(this.immmortal)
+                        this.immmortal = false;
+                        console.log(this.immmortal)
+                    }, 2000);
+                }
+            }
         }
-    }
 
         if (touched === 'coin' && actor.type === 'coin') {
             this.removeActor(actor);
@@ -208,18 +210,15 @@ class LevelParser {
     }
 }
 class Live extends Actor {
-	constructor(position = new Vector(0, 0)) {
+    constructor(position = new Vector(0, 0)) {
         super(position, new Vector(1, 1), new Vector(0, 0));
     }
     get type() {
         return 'live';
     }
-    getNextPosition(time = 1) {
-    }
-    handleObstacle() {
-    }
-    act(time, level) {
-    }
+    getNextPosition(time = 1) {}
+    handleObstacle() {}
+    act(time, level) {}
 }
 class Fireball extends Actor {
     constructor(position = new Vector(0, 0), speed = new Vector(0, 0)) {
@@ -408,5 +407,5 @@ const actorDict = {
 const parser = new LevelParser(actorDict);
 
 loadLevels().then(json =>
-    runGame(JSON.parse(json), parser, DOMDisplay))
+        runGame(JSON.parse(json), parser, DOMDisplay))
     .then(() => alert('Вы выйграли приз!'));
