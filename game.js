@@ -71,9 +71,9 @@ class Level {
             new Live(new Vector(15.5, 1)),
             new Live(new Vector(17, 1)),
             new Live(new Vector(18.5, 1)),
-        ]        
+        ]
         this.actors = actors.slice();
-        this.actors = this.actors.concat(this.livesActors);
+        //this.actors = this.actors.concat(this.livesActors);
         this.status = null;
         this.finishDelay = 1;
         this.grid = grid.slice();
@@ -136,27 +136,31 @@ class Level {
             return
         }
 
-        if (!this.immmortal) {
-            if (['lava', 'fireball'].some(element => element === touched)) {
-                this.immmortal = true;
-                //this.status = "immmortal";
-                this.numLives--;
-                const live = this.livesActors.pop();
-                this.removeActor(live);
-                console.log(this.numLives);
-
-                if (this.numLives <= 0) {
-                    this.status = 'lost';
-
-                } else {
-                    setTimeout(() => {
-                        //console.log(this.immmortal)
-                        this.immmortal = false;
-                        //console.log(this.immmortal)
-                    }, 2000);
-                }
-            }
+        if (['lava', 'fireball'].some(element => element === touched)) {
+            this.status = 'lost';
         }
+
+        // if (!this.immmortal) {
+        //     if (['lava', 'fireball'].some(element => element === touched)) {
+        //         //this.immmortal = true;
+        //         //this.status = "immmortal";
+        //         //this.numLives--;
+        //         //const live = this.livesActors.pop();
+        //         //this.removeActor(live);
+        //         //console.log(this.numLives);
+
+        //         if (this.numLives <= 0) {
+        //             this.status = 'lost';
+
+        //         } else {
+        //             setTimeout(() => {
+        //                 //console.log(this.immmortal)
+        //                 this.immmortal = false;
+        //                 //console.log(this.immmortal)
+        //             }, 2000);
+        //         }
+        //     }
+        // }
 
         if (touched === 'coin' && actor.type === 'coin') {
             this.removeActor(actor);
@@ -206,8 +210,8 @@ class LevelParser {
         return actors;
     }
 
-    parse(plan, numLives = 3) {
-        return new Level(this.createGrid(plan), this.createActors(plan), numLives);
+    parse(plan /*, numLives = 3*/ ) {
+        return new Level(this.createGrid(plan), this.createActors(plan) /*, numLives*/ );
     }
 }
 class Live extends Actor {
